@@ -1,0 +1,56 @@
+\documentclass[12pt]{article} 
+\usepackage{german} 
+\usepackage[utf8]{inputenc} 
+\usepackage{latexsym} 
+\usepackage{amsfonts} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{wasysym}
+\usepackage{stmaryrd}
+\usepackage{makeidx}
+\usepackage{pgfplots}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[headsepline]{scrpage2}
+\usepackage{enumerate}
+\pagestyle{plain}
+\pagestyle{scrheadings}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+ %Titel
+\begin{document}
+\begin{center}
+ \textbf{\Large Computergrafik Blatt 1}\\
+ \emph{Anton Zickenberg, Johannes Gleichauf}
+\end{center}
+
+\section*{Aufgabe 1}
+\includegraphics*[scale=0.165]{Screenshot.png}
+\section*{Aufgabe 2}
+\begin{enumerate}[a)]
+\item int a = 2; //Integer-Variable a\\ 
+	  int *pa = $\&$a ; //Pointer auf Variable a\\ 
+	  a++; //Was steht in Variable a?\\ 
+	  Der Wert der Variable ist nun 3\\
+	  \\	  
+	  (*pa)++; //Was steht jetzt in Variable a?\\ 
+	  Der Wert der Variable ist nun 4\\
+	  \\
+	  *pa = 0; //Welchen Wert hat Variable a?\\
+	  Der Wert der Variable ist nun 0\\
+	  \\ 
+	  pa++; //Was bewirkt dieses Statement?\\ 
+	  		//Warum ist es problematisch?\\
+\item Ein Pointer zeigt auf den Wert einer Speicheradresse. Eine Referenz ($\&$-Operator) besitzt die Speicheradresse einer Variablen.
+\item 
+\end{enumerate}
+\section*{Aufgabe 3}
+
+\end{document}
