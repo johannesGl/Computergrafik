@@ -16,6 +16,7 @@
 \usepackage{stmaryrd}
 \usepackage{makeidx}
 \usepackage{pgfplots}
+\usepackage{listings}
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage[onehalfspacing]{setspace}
 \usepackage[headsepline]{scrpage2}
@@ -23,6 +24,8 @@
 \pagestyle{plain}
 \pagestyle{scrheadings}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\lstset{language = Java, breaklines = true, showstringspaces = false}
 
  %Titel
 \begin{document}
@@ -49,8 +52,19 @@
 	  pa++; //Was bewirkt dieses Statement?\\ 
 	  		//Warum ist es problematisch?\\
 \item Ein Pointer zeigt auf den Wert einer Speicheradresse. Eine Referenz ($\&$-Operator) besitzt die Speicheradresse einer Variablen.
-\item Wenn man in einem \emph{Call-by-Value} Aufruf den Wert des Values \"andert, dann wird der Wert nur innerhalb der Funktion gen\"andert, jedoch ist der neue Wert nicht au{\ss}erhalb der Funktion verf\"ugbar.\\
-In einem \emph{Call-by-Reference} Aufruf, wird beim \"andern des Wertes der Wert der Referenz ge\"andert, dieser ist somit auch au{\ss}erhalb der Funktion durch Zugriff auf die Referenz erreichbar.
+\item \begin{lstlisting}
+void functionA (int param1, int param2);
+void functionA (int &param1, int &param2);
+void functionA (int *param1, int *param2);
+\end{lstlisting}  
+Die erste Methode bekommt als Übergabeparameter zwei Integer. Die zweite bekommt zwei Integer Referenzen. Die dritte bekommt Integer pointer.\\
+\\
+Wenn man in einem \emph{Call-by-Value} Aufruf den Wert des Values \"andert, dann wird der Wert nur innerhalb der Funktion gen\"andert, jedoch ist der neue Wert nicht au{\ss}erhalb der Funktion verf\"ugbar.\\
+In einem \emph{Call-by-Reference} Aufruf, wird beim \"andern des Wertes der Wert der Referenz ge\"andert, dieser ist somit auch au{\ss}erhalb der Funktion durch Zugriff auf die Referenz erreichbar.\\
+Anwendung \emph{Call-by-Value}:\\
+Ein mögliches Szenario wäre die add (a+b) Funktion. Da die Übergabeparameter in der Funktion nicht verändert werden, ist keine Referenz nötig.\\
+\emph{Call-by-Reference}:\\
+Ein mögliches Szenario wäre ein Sortieralgorithmus auf einem Array. Damit von überall auf das sortierte Array zugegriffen werden kann, ohne weiteren Speicher mit zusätzlichen Variablen zu benötigen.
 \end{enumerate}
 \section*{Aufgabe 3}
 
