@@ -36,6 +36,7 @@
 
 \section*{Aufgabe 1}
 \includegraphics*[scale=0.165]{Screenshot.png}
+
 \section*{Aufgabe 2}
 \begin{enumerate}[a)]
 \item int a = 2; //Integer-Variable a\\ 
@@ -51,7 +52,12 @@
 	  \\ 
 	  pa++; //Was bewirkt dieses Statement?\\ 
 	  		//Warum ist es problematisch?\\
-\item Ein Pointer zeigt auf den Wert einer Speicheradresse. Eine Referenz ($\&$-Operator) besitzt die Speicheradresse einer Variablen.
+\item 
+\begin{enumerate}[1.]
+\item Ein Pointer zeigt auf den Wert einer Speicheradresse. Eine Referenz ($\&$-Operator) besitzt die Speicheradresse einer Variablen. 
+\item Pointer k\"onnen NULL sein, Referenzen nicht.
+\item Pointer k\"onnen von einem Objekt auf ein anderes Umgeh\"angt werden, Referenzen zeigen immer auf das gleiche Objekt
+\end{enumerate}
 \item \begin{lstlisting}
 void functionA (int param1, int param2);
 void functionA (int &param1, int &param2);
@@ -66,6 +72,9 @@ Ein mögliches Szenario wäre die add (a+b) Funktion. Da die Übergabeparameter 
 \emph{Call-by-Reference}:\\
 Ein mögliches Szenario wäre ein Sortieralgorithmus auf einem Array. Damit von überall auf das sortierte Array zugegriffen werden kann, ohne weiteren Speicher mit zusätzlichen Variablen zu benötigen.
 \end{enumerate}
+
 \section*{Aufgabe 3}
+Der Unterschied von Bild (a) zu Bild (b) ist, dass die Abtastpunkte in Bild (a) geordnet sind, w\"ahrend sie in Bild (b) ungeordnet sind.\\
+Somit entsteht in Bild (a) ein geordnetese Muster, w\"ahrend in Bild (b) die Funktionen nicht geordnet \"ubereinander gelegt werden k\"onnen, und somit das Muster nur vermindert zu erkennne ist. 
 
 \end{document}
