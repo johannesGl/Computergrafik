@@ -1,0 +1,4 @@
+C:/Users/Anton/Desktop/Uni/4. Semester/CG/cg_framework/build/CMakeFiles/shaders.dir
+C:/Users/Anton/Desktop/Uni/4. Semester/CG/cg_framework/build/CMakeFiles/CG_framework.dir
+C:/Users/Anton/Desktop/Uni/4. Semester/CG/cg_framework/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Anton/Desktop/Uni/4. Semester/CG/cg_framework/build/CMakeFiles/ZERO_CHECK.dir

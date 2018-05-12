@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Matrix3x3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Matrix4x4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\ModelObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\ObjLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\TgaLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Vector2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Vector3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Vector4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\VertexBufferObjectAttribs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Matrix3x3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Matrix4x4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\ModelObj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\ObjLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\TgaLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Vector2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\Vector4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\src\VertexBufferObjectAttribs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\Shader\Default33.frag.glsl">
+      <Filter>glsl::Shader Files</Filter>
+    </None>
+    <None Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\Shader\Default33.vert.glsl">
+      <Filter>glsl::Shader Files</Filter>
+    </None>
+    <None Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\Shader\Default31.frag.glsl">
+      <Filter>glsl::Shader Files</Filter>
+    </None>
+    <None Include="C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\Shader\Default31.vert.glsl">
+      <Filter>glsl::Shader Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{C3FD1F1A-58BD-3073-B570-2EDEC144914F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A45DF705-7A07-31F7-8C96-8AAC43B3D8B5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="glsl::Shader Files">
+      <UniqueIdentifier>{B4F5C183-4DE0-3355-B02B-B10C7C04116D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

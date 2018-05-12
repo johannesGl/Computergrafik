@@ -1,0 +1,4 @@
+﻿  Application.cpp
+c:\users\anton\desktop\uni\4. semester\cg\cg_framework\src\tgaloader.h(11): warning C4099: 'Texture': type name first seen using 'struct' now seen using 'class'
+  c:\users\anton\desktop\uni\4. semester\cg\cg_framework\src\texture.h(11): note: see declaration of 'Texture'
+  CG_framework.vcxproj -> C:\Users\Anton\Desktop\Uni\4. Semester\CG\cg_framework\build\Debug\CG_framework.exe

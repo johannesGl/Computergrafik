@@ -1,0 +1,61 @@
+\documentclass[12pt]{article} 
+\usepackage{german} 
+\usepackage[utf8]{inputenc} 
+\usepackage{latexsym} 
+\usepackage{amsfonts} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{wasysym}
+\usepackage{stmaryrd}
+\usepackage{makeidx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[headsepline]{scrpage2}
+\usepackage{enumerate}
+\pagestyle{plain}
+\pagestyle{scrheadings}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\lstset{language = Java, breaklines = true, showstringspaces = false}
+
+ %Titel
+\begin{document}
+\begin{center}
+ \textbf{\Large Computergrafik Blatt 2}\\
+ \emph{Anton Zickenberg, Johannes Gleichauf}
+\end{center}
+
+\section*{Aufgabe 1}
+Wir nehmen uns einen Punkt L(t) und ziehen den Punkt $E_n$ ab. Dadruch bekommen wir einen Vektor $\overrightarrow{x}$. Sobald nun das Skalarprodukt dieses Vektors mit $\overrightarrow{n}$ 0 ergibt, wissen wir, dass v = x gilt. Ausgeschrieben erhalten wir:\\
+$\overrightarrow{n} \cdot (L(t)-E_n) = 0$\\
+Nun suchen wir das t, für welches genau diese Gleichung erfüllt wird. Wir lösen also nach t auf:\\
+$\overrightarrow{n} \cdot (L(t)-E_n) = 0$\\
+\\
+$\overrightarrow{n} \cdot ((P_0 + t \cdot \overrightarrow{d})-E_n) = 0$\\
+\\
+$ \overrightarrow{n}P_0 + \overrightarrow{n}t\overrightarrow{d}-\overrightarrow{n}E_n = 0$\\
+\\
+$\overrightarrow{n}P_0 -\overrightarrow{n}E_n = -\overrightarrow{n}t\overrightarrow{d}$\\
+\\
+$t = \frac{\overrightarrow{n}P_0 - \overrightarrow{n}E_n}{-\overrightarrow{n}\overrightarrow{d}}$\\
+\\
+$t = \frac{\overrightarrow{n}(P_0 - E_n)}{-\overrightarrow{n}\overrightarrow{d}}$\\
+Nun kennen wir dass t, und können nun den Schnittpunkt $S_i$ bestimmen. Eingesetzt erhalten wir:\\
+$S_i = P_0 + \frac{\overrightarrow{n}(P_0 - E_n)}{-\overrightarrow{n}\overrightarrow{d}} \cdot \overrightarrow{d}$
+
+\section*{Aufgabe 2}
+Zunächst müssem wir die inverse der View Matrix berechnen. Dies tun wir mit view.inverse() und speichern diese als Variable inv ab. Nun müssen wir die Kamera Position aus der Inversen gewinnen und diese als Variable CamPos weitergeben. Dies tun wir mit:\\
+$m$\_$shader->set4f("CamPos",inv.a14,inv.a24,inv.a34,inv.a44);$\\
+Mit diesem Statement geben wir die Varable CamPos, welche aus der letzten Spalte der Inversen Matrix besteht an den Shader weiter.\\
+Nun müssen wir im Shader selbst die Variable CamPos als uniform definieren. Nun können wir in der main() mit der CamPos arbeiten und berechnen nun einfach das Skalarprodukt aus der Differenz der CamPos und der VertPosition sowie der VertNormal. Sobald das Skalarprodukt kleiner 0 ist, wird es entfernt.
+
+\end{document}
