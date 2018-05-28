@@ -1,28 +1,23 @@
-\documentclass[12pt]{article} 
+\documentclass[a4paper]{article}
+
+%-----packages-----
+\usepackage{a4wide} 
 \usepackage{german} 
 \usepackage[utf8]{inputenc} 
 \usepackage{latexsym} 
+\usepackage{mathrsfs}
 \usepackage{amsfonts} 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{MnSymbol}
 \usepackage[colorlinks=true,urlcolor=blue]{hyperref}
 \usepackage{listings}
+\usepackage{dsfont}
 \usepackage{graphicx}
-\usepackage[utf8]{inputenc}
-\usepackage[german]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{wasysym}
-\usepackage{stmaryrd}
-\usepackage{makeidx}
-\usepackage{pgfplots}
-\usepackage{listings}
-\usepackage[ruled,vlined]{algorithm2e}
-\usepackage[onehalfspacing]{setspace}
-\usepackage[headsepline]{scrpage2}
 \usepackage{enumerate}
+\usepackage{tikz}
 \pagestyle{plain}
-\pagestyle{scrheadings}
+%-----packages-----
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 
 \lstset{language = Java, breaklines = true, showstringspaces = false}
@@ -35,9 +30,14 @@
 \end{center}
 
 \section*{Aufgabe 1}
-\textbf{Zeile 1}: Es handelt sich um den CMY Farbraum. In Kanal 1 betrachten wir den Würfel für den CMYK Raum. Da Magenta und Gelb in dem Würfel keine Nachbarn von Cyan sind, haben sie dementsprechend auch einen geringen Farbanteil von Cyan und somit sind die Farbbereiche auf Kanal 1 auch dunkel. Auf Kanal 2 betrachten wir Magenta. Da wir Magenta betrachten, ist bei der Blume auch der magentafarbene Teil sehr hell. Da allerdings Gelb und Magenta im CMYK Würfel keine Nachbarn sind, hat Gelb auch einen relativ geringen Farbanteil an Magenta. In Kanal 3 sehen wir nun dass genaue Gegenteil. Der Magentafarbene Teil ist relativ dunkel, da Gelb einen geringen Farbanteil von Magenta ausmacht während die gelben Farbteile der Blume hell sind.\\
-\textbf{Zeile 2}: Es handelt sich um den HSV Farbraum. In Kanal 1 wird der Farbwert in Grad berachtet. Betrrachten wir nun den Sechseckpyramiden-Farbkörper, so erkennen wir, dass Gelb einen Winkel von 60 Grad hat und somit vergleichsweise dunkel ist , während Magenta einen Winkel von 300 Grad hat und somit einen relativ hohen Wert besitzt. In Kanal 2 betrachten wir die Sättigung der Farbe. Eine hohe Sättigung bedeutet auf dem HSV-Farbwähler, dass die Farben Gelb und Magenta in hohen Anteilen vorhanden sind und somit Gelb und Magenta selbst einen hohen Sättigungsanteil haben. In Kanal 3 sehen wir die Dunkelstufe. Da Gelb auf dem HSV-Farbwähler der geringen Dunkelstufe gegenüber liegt, hat Gelb eine sehr hohe Helligkeit. Magenta hat ebenfalls einen relativ hohen Helligkeitswert, allerding nicht so viel wie Gelb.\\
-\textbf{Zeile 3}: Es handelt sich um den RGB Farbraum.  Betrachten wir den RGB Würfel, so erkennt man, dass die benachbarten Knoten von Rot, Gelb und Magenta sind. Somit sind sowohl in Gelb als auch in Magenta ein hoher Farbanteil von Rot enthalten ist und somit auch das gesamte Bild hell ist. In Kanal 2 erkennt man, dass in Magenta wie in dem RGB Würfel, ein sehr geringer grüner Farbanteil enthalten ist, in Gelb jedoch ein hoher Farbanteil von Grün enthalten ist. In Kanal 3 erkennt man, dass Blau zwar in Magenta enthalten ist, und somit der Magentafarbene Teil der Blume vergleichsweise hell ist, in Gelb jedoch beinahe kein blauer Farbanteil enthalten ist und somit auch die gelben Teile der Blume dementsprechend dunkel sind.
+\begin{enumerate}[{\textbf{Zeile} }1:]
+\item Es handelt sich um den \textbf{CMY} Farbraum. In Kanal 1 betrachten wir den Würfel für den CMYK Raum. Da Magenta und Gelb in dem Würfel keine Nachbarn von Cyan sind, haben sie dementsprechend auch einen geringen Farbanteil von Cyan und somit sind die Farbbereiche auf Kanal 1 auch dunkel. Auf Kanal 2 betrachten wir Magenta. Da wir Magenta betrachten, ist bei der Blume auch der Magentafarbene Teil sehr hell. Da allerdings Gelb und Magenta im CMYK Würfel keine Nachbarn sind, hat Gelb auch einen relativ geringen Farbanteil an Magenta. In Kanal 3 sehen wir nun dass genaue Gegenteil. Der Magentafarbene Teil ist relativ dunkel, da Gelb einen geringen Farbanteil von Magenta ausmacht während die gelben Farbteile der Blume hell sind.
+
+\item Es handelt sich um den \textbf{HSV} Farbraum. In Kanal 1 wird der Farbwert in Grad betrachtet. Betrachten wir nun den Sechseckpyramiden-Farbkörper, so erkennen wir, dass Gelb einen Winkel von 60° hat und somit vergleichsweise dunkel ist , während Magenta einen Winkel von 300° hat und somit einen relativ hohen Wert besitzt. In Kanal 2 betrachten wir die Sättigung der Farbe. Eine hohe Sättigung bedeutet auf dem HSV-Farbwähler, dass die Farben Gelb und Magenta in hohen Anteilen vorhanden sind und somit Gelb und Magenta selbst einen hohen Sättigungsanteil haben. In Kanal 3 sehen wir die Dunkelstufe. Da Gelb auf dem HSV-Farbwähler der geringen Dunkelstufe gegenüber liegt, hat Gelb eine sehr hohe Helligkeit. Magenta hat ebenfalls einen relativ hohen Helligkeitswert, allerdings nicht so viel wie Gelb.
+
+\item Es handelt sich um den \textbf{RGB} Farbraum.  Betrachten wir den RGB Würfel, so erkennt man, dass die benachbarten Knoten von Rot, Gelb und Magenta sind. Somit sind sowohl in Gelb als auch in Magenta ein hoher Farbanteil von Rot enthalten ist und somit auch das gesamte Bild hell ist. In Kanal 2 erkennt man, dass in Magenta wie in dem RGB Würfel, ein sehr geringer grüner Farbanteil enthalten ist, in Gelb jedoch ein hoher Farbanteil von Grün enthalten ist. In Kanal 3 erkennt man, dass Blau zwar in Magenta enthalten ist, und somit der Magentafarbene Teil der Blume vergleichsweise hell ist, in Gelb jedoch beinahe kein blauer Farbanteil enthalten ist und somit auch die gelben Teile der Blume dementsprechend dunkel sind.
+\end{enumerate}
+
 \section*{Aufgabe 2}
 In Ilias hochgeladen
 
