@@ -33,6 +33,13 @@ not need to write it around every OpenGL call you make!
 -----------------------------------------------------------------------------
 */
 
+//Contain the values for the hsv colors
+float m_hue;
+float m_saturation;
+float m_brightness;
+float winkel = 0;
+bool changeOthografic = true;
+
 /**
 	Constructor and destructor.
 */
@@ -60,7 +67,13 @@ void Application::init()
 	//m_shader = new Shader("../Shader/Default31.vert.glsl", "../Shader/Default31.frag.glsl");
 
 	// A vertex buffer object (which stores geometry) is loaded from an *.obj file.
-	m_vbo = ObjLoader::createVertexBufferObject("../Data/torus.obj");
+	m_vbo = ObjLoader::createVertexBufferObject("../Data/simple_cube.obj");
+	//m_vbo = ObjLoader::createVertexBufferObject("../Data/torus.obj");
+	//m_vbo = ObjLoader::createVertexBufferObject("../Data/box.obj");
+
+	//m_hue = 120;
+	//m_saturation = 0.8;
+	//m_brightness = 0.5;
 }
 
 
@@ -90,6 +103,58 @@ void Application::onKey(GLint key, GLint scancode, GLint action, GLint mods) {
 		{
 			m_showMesh = !m_showMesh;
 		}
+
+		if (key == 'O' && action == GLFW_PRESS)
+		{
+			changeOthografic = !changeOthografic;
+		}
+
+		// key '1' decreases the hue value by x
+		if (key == '1' && action == GLFW_PRESS)
+		{
+			m_hue -= 10;
+
+			if (m_hue < 0)
+			{
+				m_hue += 360;
+			}
+		}
+
+		// key '2' increases the hue value by x
+		if (key == '2' && action == GLFW_PRESS)
+		{
+			m_hue += 10;
+
+			if (m_hue > 360)
+			{
+				m_hue -= 360;
+			}
+		}
+
+		// key '3' decreases the saturation value by x
+		if (key == '3' && action == GLFW_PRESS && m_saturation >= 0.05)
+		{
+			m_saturation -= 0.05; 
+		}
+
+		// key '4' increases the saturation value by x
+		if (key == '4' && action == GLFW_PRESS && m_saturation <= 0.95)
+		{
+			m_saturation += 0.05;
+		}
+
+		// key '5' decreases the brightness value by x
+		if (key == '5' && action == GLFW_PRESS && m_brightness >= 0.05)
+		{
+			m_brightness -= 0.05;
+		}
+
+		// key '6' increases the brightness value by x
+		if (key == '6' && action == GLFW_PRESS && m_brightness <= 0.95)
+		{
+			m_brightness += 0.05;
+		}
+
 		// key 'F5' reloads shaders
 		if (key == GLFW_KEY_F5 && action == GLFW_PRESS)
 		{
@@ -118,6 +183,7 @@ void Application::render()
 	{
 		// Wireframe line rendering.
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
 	}
 	else
 	{
@@ -130,7 +196,25 @@ void Application::render()
 	mat4 projection = mat4::perspective(45.0f, (GLfloat)m_width / (GLfloat)m_height, 0.1f, 1000.0f);
 	mat4 view = mat4::translate(vec3(0, 0, m_zoom)) * mat4::rotate(m_rotate.x, 1, 0, 0) * mat4::rotate(m_rotate.y, 0, 1, 0);
 	mat4 model = mat4::identitiy();
-	mat4 inv = view.inverse();
+	mat4 inf = view.inverse();
+	float f = 1000.0f;
+	float n = 0.1f;
+	float fov = 45.0f;
+	float zoom = tanf(fov * math_radians / 2.0f);
+	mat4 orthographic = mat4(((float)m_height / (float)m_width)*zoom, 0.0f, 0.0f, 0.0f,
+		0.0f, 1.0f*zoom, 0.0f, 0.0f,
+		0.0f, 0.0f, 1.0f / (f - n), -n,
+		0.0f, 0.0f, 0.0f, 1.0f);
+	//mat4 orthographic = projection * mat4(1/n,0,0,0, 0,1/n,0,0, 0,0,0,-((n-f)/f*(f-n)*n), 0,0,-1,(((-f-n)*(n-f))/(2*f*(f-n)*n)) + ((f+n)/(2*f*n)));
+	//mat4 orthographic = projection * model;
+	
+	winkel += 0.001f;
+	//std::cout << winkel;
+	if (winkel > 360)
+	{
+		winkel = 0;
+	}
+
 
 	// The shader is activated. The upcoming geometry will be passed through the Vertex and Fragment shaders.
 	m_shader->bind();
@@ -140,10 +224,36 @@ void Application::render()
 		//	setf	->	1D float
 		//	set2f	->	2D float
 		//	set3f	->	3D float
-		m_shader->setMatrix("matProjection", projection, GL_TRUE);
+		if (changeOthografic)
+		{
+			m_shader->setMatrix("matProjection", projection, GL_TRUE);
+			m_shader->setMatrix("matOrtographic", mat4::identitiy(), GL_TRUE);
+			m_shader->seti("flag", 0);
+		}
+		else
+		{
+			m_shader->setMatrix("matOrtographic", orthographic, GL_TRUE);
+			m_shader->setMatrix("matProjection", mat4::identitiy(), GL_TRUE);
+			m_shader->seti("flag", 1);
+		}
+	
+		m_shader->setf("winkel",winkel);
 		m_shader->setMatrix("matView", view, GL_TRUE);
 		m_shader->setMatrix("matModel", model, GL_TRUE);
-		m_shader->set4f("CamPos",inv.a14,inv.a24,inv.a34,inv.a44);
+		m_shader->set4f("camPos", inf.a14, inf.a24, inf.a34, inf.a44);
+
+		vec3 hsv_offsets;
+		hsv_offsets.x = m_hue;
+		hsv_offsets.y = m_saturation;
+		hsv_offsets.z = m_brightness;
+
+		//std::cout << "* Debug " << m_hue << std::endl;
+
+		m_shader->set3f("hsv_user_input", hsv_offsets);
+
+		//m_hue = 0;
+		//m_saturation = 0;
+		//m_brightness = 0;
 
 		// The geometry is pushed through the rendering pipeline. Vertex shader is called for each vertex; fragment shader for each fragment (potential pixel).
 		m_vbo->render();

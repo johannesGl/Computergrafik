@@ -8,8 +8,11 @@
 
 // Uniform variables: passed to the shader from CPU side.
 uniform mat4x4 matModel;
-uniform mat4x4 matView;
+uniform mat4x4 matView;	
 uniform mat4x4 matProjection;
+uniform mat4x4 matOrtographic;
+uniform float winkel;
+uniform int flag;
 
 
 // Maps the data locations to variables.
@@ -29,9 +32,21 @@ void main()
 {	   
     VertPosition = Position; 
     VertNormal   = Normal;
-	VertColor    = Color;
+	VertColor    = Color;	
 	VertTexture  = Texture;
 	
+	mat3x3 rotation = mat3x3(cos(winkel),0,-sin(winkel), 0,1,0, sin(winkel),0,cos(winkel));
+	vec3 pos = rotation * VertPosition.xyz;
+	if(flag == 0)
+	{
+		vec3 pos = rotation * VertPosition.xyz;
+	}
+	else
+	{
+		vec3 pos = VertPosition.xyz * rotation;
+	}
+	
+	
 	// OpenGL Macro that sets the position of the emitted geometry.
-    gl_Position = matProjection * matView * matModel * vec4(Position.xyz, 1);
+    gl_Position = (matProjection * matOrtographic) * matView * matModel * vec4(pos, 1);
 }
