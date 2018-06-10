@@ -1,0 +1,113 @@
+\documentclass[12pt]{article} 
+\usepackage{german} 
+\usepackage[utf8]{inputenc} 
+\usepackage{latexsym} 
+\usepackage{amsfonts} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{wasysym}
+\usepackage{stmaryrd}
+\usepackage{makeidx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[headsepline]{scrpage2}
+\usepackage{enumerate}
+\pagestyle{plain}
+\pagestyle{scrheadings}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\lstset{language = Java, breaklines = true, showstringspaces = false}
+
+ %Titel
+\begin{document}
+\begin{center}
+ \textbf{\Large Computergrafik Blatt 4}\\
+ \emph{Anton Zickenberg, Johannes Gleichauf}
+\end{center}
+
+\section*{Aufgabe 1}
+Es gilt:\\
+$M_{orth} = M_{per} \cdot P$
+Stellen wir diese Formel um erhalten wir:\\
+$M_{orth} \cdot  M_{per}^{-1} =  P$\\
+Wir beginnen damit, die Matrix $M_{per}$ zu invertieren:\\
+$\left(
+\begin{array}{cccc|cccc}
+  \frac{2n}{r-l} &  0 &  \frac{r+l}{r-l} & 0 & 1 & 0 & 0 & 0 \\
+  0 &  \frac{2n}{t-b} &  \frac{t+b}{t-b} & 0 & 0 & 1 & 0 & 0 \\
+  0 & 0 & \frac{-(f+b)}{f-n} & \frac{-2fn}{f-n} & 0 & 0 & 1 & 0\\
+  0 & 0 & -1 & 0 & 0 & 0 & 0 & 1
+\end{array}
+\right)$
+\\
+\\
+\\
+$\left(
+\begin{array}{cccc|cccc}
+  \frac{2n}{r+l} &  0 &  1 & 0 & \frac{r-l}{r+l} & 0 & 0 & 0 \\
+  0 &  \frac{2n}{t+b} &  1 & 0 & 0 & \frac{t-b}{t+b} & 0 & 0 \\
+  0 & 0 & 1 & \frac{-2fn}{-(f+n)} & 0 & 0 & \frac{f-n}{-(f+n)} & 0\\
+  0 & 0 & -1 & 0 & 0 & 0 & 0 & 1
+\end{array}
+\right)$
+\\
+\\
+\\
+$\left(
+\begin{array}{cccc|cccc}
+  \frac{2n}{r+l} &  0 &  0 & 0 & \frac{r-l}{r+l} & 0 & 0 & 1 \\
+  0 &  \frac{2n}{t+b} &  0 & 0 & 0 & \frac{t-b}{t+b} & 0 & 1 \\
+  0 & 0 & 0 & \frac{-2fn}{-(f+n)} & 0 & 0 & \frac{f-n}{-(f+n)} & 1\\
+  0 & 0 & -1 & 0 & 0 & 0 & 0 & 1
+\end{array}
+\right)$
+\\
+\\
+\\
+$\left(
+\begin{array}{cccc|cccc}
+  1 &  0 &  0 & 0 & \frac{r-l}{2n} & 0 & 0 & \frac{r+l}{2n} \\
+  0 &  1 &  0 & 0 & 0 & \frac{t-b}{2n} & 0 & \frac{t+b}{2n} \\
+  0 & 0 & 1 & 0 & 0 & 0 & 0 & -1\\
+  0 & 0 & 0 & 1 & 0 & 0 & \frac{f-n}{-2fn} & \frac{-(f+n)}{-2fn}
+\end{array}
+\right)$\\
+\\
+Nun haben wir auf der rechten Seite unsere Inverse Matrix. Nun setzen wir diese in die obere Gleichung ein:\\
+$\left(
+\begin{array}{cccc}
+\frac{2}{r-l} & 0 & 0 & \frac{-(r-l)}{(r-l)} \\
+0 & \frac{2}{(t-b)} & 0 & \frac{-(t+b)}{(t-b)} \\
+0 & 0 & \frac{-2}{(f-n)} &  \frac{-(n+f)}{(f-n)} \\
+0 & 0 & 0 & 1
+\end{array}
+\right) \cdot \left(
+\begin{array}{cccc}
+\frac{r-l}{2n} & 0 & 0 & \frac{r+l}{2n} \\
+ 0 & \frac{t-b}{2n} & 0 & \frac{t+b}{2n} \\
+0 & 0 & 0 & -1 \\
+ 0 & 0 & \frac{f-n}{-2fn} & \frac{-(f+n)}{-2fn} \\
+\end{array}
+\right) = P$\\
+und erhalten:\\
+$ \left(
+\begin{array}{cccc}
+\frac{1}{n}& 0 & -\frac{(f-n)(l-r)}{2fn(l+r)} & \frac{l+r}{n(r-l)} - \frac{(-f-n)(l-r)}{2fn(l+r)}\\
+ 0 & \frac{1}{n} & -\frac{(f-n)(-b-t)}{2fn(t-b)} & \frac{b+t}{n(t-b)} - \frac{(-f-n)(-b-t)}{2fn(t-b)} \\
+0 & 0 & -\frac{-f-n}{2fn} & \frac{2}{f-n} - \frac{(-f-n)^2}{2f(f-n)n} \\
+0 & 0 & -\frac{f-n}{2fn} & -\frac{-f-n}{2fn} \\
+\end{array}
+\right)$
+\section*{Aufgabe 2}
+Im Framework bearbeitet
+
+\end{document}
