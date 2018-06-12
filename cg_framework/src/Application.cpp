@@ -201,10 +201,10 @@ void Application::render()
 	float n = 0.1f;
 	float fov = 45.0f;
 	float zoom = tanf(fov * math_radians / 2.0f);
-	mat4 orthographic = mat4(((float)m_height / (float)m_width)*zoom, 0.0f, 0.0f, 0.0f,
-		0.0f, 1.0f*zoom, 0.0f, 0.0f,
-		0.0f, 0.0f, 1.0f / (f - n), -n,
-		0.0f, 0.0f, 0.0f, 1.0f);
+	mat4 orthographic =    mat4((float)m_width / (float) m_height, 0.0f, 0.0f, 0.0f,
+								0.0f, (float)m_width/(float)m_height, 0.0f, 0.0f,
+								0.0f, 0.0f, (-2)/(f-n), -(n + f) / (f - n),
+							    0.0f, 0.0f, 0.0f, 1.0f)	;
 	//mat4 orthographic = projection * mat4(1/n,0,0,0, 0,1/n,0,0, 0,0,0,-((n-f)/f*(f-n)*n), 0,0,-1,(((-f-n)*(n-f))/(2*f*(f-n)*n)) + ((f+n)/(2*f*n)));
 	//mat4 orthographic = projection * model;
 	
