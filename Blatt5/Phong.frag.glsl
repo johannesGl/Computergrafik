@@ -26,9 +26,9 @@ void main()
    //vec4 color = VertColor;
   
    
-   vec4 color = vec4(Ambient 
-   + LightColor * (Diffuse * (dot(normalize(VertLightVec),normalize(VertNormal.xyz)))) 
-   + Specular * pow((dot(normalize(VertLightVec + VertEyeVec),normalize(VertNormal.xyz))),shininess) , 1.0f);
+   vec4 color = vec4(
+                Ambient + LightColor * ((Diffuse * (dot(normalize(VertLightVec),normalize(VertNormal.xyz)))) 
+                + Specular * pow((dot(normalize(VertLightVec + VertEyeVec),normalize(VertNormal.xyz))),shininess)) , 1.0f);
    //vec4 color =  vec4((Ambient + Diffuse + Specular),1.0f);
    FragColor = vec4(color);	
 }

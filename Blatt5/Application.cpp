@@ -14,10 +14,10 @@
 
 /*
 -----------------------------------------------------------------------------
-							Application.cpp
+Application.cpp
 -----------------------------------------------------------------------------
 
-This class is responsible for the rendering. 
+This class is responsible for the rendering.
 A short description of the methods:
 
 render()		-	Render loop method that is called for each frame.
@@ -41,9 +41,9 @@ float winkel = 0;
 bool changeOthografic = true;
 
 /**
-	Constructor and destructor.
+Constructor and destructor.
 */
-Application::Application(int width, int height)	:
+Application::Application(int width, int height) :
 	m_width(width),
 	m_height(height)
 {
@@ -57,12 +57,12 @@ Application::~Application()
 
 
 /**
-	This method is called once. Use it to initialize shaders, vertex buffer objects, and elements that do not change during the render loop.
+This method is called once. Use it to initialize shaders, vertex buffer objects, and elements that do not change during the render loop.
 */
 void Application::init()
 {
 	// The shader constructor takes as argument the files in which the Vertex and the Fragment shader are defined.
-	
+
 	//m_shader = new Shader("../Shader/Default33.vert.glsl", "../Shader/Default33.frag.glsl");
 	m_shader = new Shader("../Shader/Phong.vert.glsl", "../Shader/Phong.frag.glsl");
 
@@ -83,7 +83,7 @@ void Application::init()
 
 
 /**
-	This method is called when the key 'F5' is pressed. It can be used to reload the shader if changes have been made, without having to restart the whole program.
+This method is called when the key 'F5' is pressed. It can be used to reload the shader if changes have been made, without having to restart the whole program.
 */
 void Application::reloadShader()
 {
@@ -97,7 +97,7 @@ void Application::reloadShader()
 
 
 /**
-	This method is called when a key is pressed / released. Use it to bind actions to keys.
+This method is called when a key is pressed / released. Use it to bind actions to keys.
 */
 void Application::onKey(GLint key, GLint scancode, GLint action, GLint mods) {
 
@@ -139,7 +139,7 @@ void Application::onKey(GLint key, GLint scancode, GLint action, GLint mods) {
 		// key '3' decreases the saturation value by x
 		if (key == '3' && action == GLFW_PRESS && m_saturation >= 0.05)
 		{
-			m_saturation -= 0.05; 
+			m_saturation -= 0.05;
 		}
 
 		// key '4' increases the saturation value by x
@@ -171,11 +171,11 @@ void Application::onKey(GLint key, GLint scancode, GLint action, GLint mods) {
 
 
 /**
-	The render loop. This is called for each frame.
+The render loop. This is called for each frame.
 */
 void Application::render()
 {
-    
+
 	// Setting up the viewport of the window.
 	glViewport(0, 0, m_framebufferWidth, m_framebufferHeight);
 
@@ -206,14 +206,14 @@ void Application::render()
 	float n = 0.1f;
 	float fov = 45.0f;
 	float zoom = tanf(fov * math_radians / 2.0f);
-	mat4 orthographic =    mat4((float)m_width / (float) m_height, 0.0f, 0.0f, 0.0f,
-								0.0f, (float)m_width/(float)m_height, 0.0f, 0.0f,
-								0.0f, 0.0f, (-2)/(f-n), -(n + f) / (f - n),
-							    0.0f, 0.0f, 0.0f, 1.0f)	;
+	mat4 orthographic = mat4((float)m_width / (float)m_height, 0.0f, 0.0f, 0.0f,
+		0.0f, (float)m_width / (float)m_height, 0.0f, 0.0f,
+		0.0f, 0.0f, (-2) / (f - n), -(n + f) / (f - n),
+		0.0f, 0.0f, 0.0f, 1.0f);
 	//mat4 orthographic = projection * mat4(1/n,0,0,0, 0,1/n,0,0, 0,0,0,-((n-f)/f*(f-n)*n), 0,0,-1,(((-f-n)*(n-f))/(2*f*(f-n)*n)) + ((f+n)/(2*f*n)));
 	//mat4 orthographic = projection * model;
-	
-	
+
+
 
 	winkel += 0.001f;
 	//std::cout << winkel;
@@ -226,64 +226,63 @@ void Application::render()
 	// The shader is activated. The upcoming geometry will be passed through the Vertex and Fragment shaders.
 	m_shader->bind();
 
-		// Parameters can be transferred to the GPU as "uniform" variables (visible in all shaders).
-		// Other types (similar for int):
-		//	setf	->	1D float
-		//	set2f	->	2D float
-		//	set3f	->	3D float
-		if (changeOthografic)
-		{
-			m_shader->setMatrix("matProjection", projection, GL_TRUE);
-			m_shader->setMatrix("matOrtographic", mat4::identitiy(), GL_TRUE);
-			m_shader->seti("flag", 0);
-		}
-		else
-		{
-			m_shader->setMatrix("matOrtographic", orthographic, GL_TRUE);
-			m_shader->setMatrix("matProjection", mat4::identitiy(), GL_TRUE);
-			m_shader->seti("flag", 1);
-		}
-	
-		m_shader->setf("winkel",winkel);
-		m_shader->setMatrix("matView", view, GL_TRUE);
-		m_shader->setMatrix("matModel", model, GL_TRUE);
-		m_shader->set4f("camPos", inf.a14, inf.a24, inf.a34, inf.a44);
+	// Parameters can be transferred to the GPU as "uniform" variables (visible in all shaders).
+	// Other types (similar for int):
+	//	setf	->	1D float
+	//	set2f	->	2D float
+	//	set3f	->	3D float
+	if (changeOthografic)
+	{
+		m_shader->setMatrix("matProjection", projection, GL_TRUE);
+		m_shader->setMatrix("matOrtographic", mat4::identitiy(), GL_TRUE);
+		m_shader->seti("flag", 0);
+	}
+	else
+	{
+		m_shader->setMatrix("matOrtographic", orthographic, GL_TRUE);
+		m_shader->setMatrix("matProjection", mat4::identitiy(), GL_TRUE);
+		m_shader->seti("flag", 1);
+	}
 
-		vec3 hsv_offsets;
-		hsv_offsets.x = m_hue;
-		hsv_offsets.y = m_saturation;
-		hsv_offsets.z = m_brightness;
+	m_shader->setf("winkel", winkel);
+	m_shader->setMatrix("matView", view, GL_TRUE);
+	m_shader->setMatrix("matModel", model, GL_TRUE);
+	m_shader->set4f("camPos", inf.a14, inf.a24, inf.a34, inf.a44);
 
-		
+	vec3 hsv_offsets;
+	hsv_offsets.x = m_hue;
+	hsv_offsets.y = m_saturation;
+	hsv_offsets.z = m_brightness;
 
-		//std::cout << "* Debug " << m_hue << std::endl;
 
-		m_shader->set3f("hsv_user_input", hsv_offsets);
 
-		m_shininess = 0.5f;
+	//std::cout << "* Debug " << m_hue << std::endl;
 
-		vec3 lightPos = vec3(250.0f, 250.0f, 2.0f);
-		vec3 lightCol = vec3(1.0f, 1.0f, 2.0f);
-		vec3 diffuse = vec3(0.0f, 0.0f, 0.0f);
-		vec3 specular = vec3(1-diffuse.x, 1 - diffuse.y, 1 - diffuse.z);
+	m_shader->set3f("hsv_user_input", hsv_offsets);
 
-		m_ambient = lightCol * 0.0f;
-	
+	m_shininess = 0.7f;
 
-		m_shader->setf("shininess", m_shininess);
-		m_shader->set3f("Ambient", m_ambient);
+	vec3 lightPos = vec3(0.0f, 20.0f, 200.0f);
+	vec3 lightCol = vec3(0.8f, 0.05f, 0.6f);
+	vec3 diffuse = vec3(0.8f, 0.8f, 0.8f);
+	vec3 specular = vec3(0.8f, 0.8f, 0.5f);
 
-		m_shader->set3f("Diffuse", diffuse);
-		m_shader->set3f("Specular", specular);
-		m_shader->set3f("LightPos", lightPos);
-		m_shader->set3f("LightColor", lightCol);
+	m_ambient = lightCol * 0.0f;
 
-		//m_hue = 0;
-		//m_saturation = 0;
-		//m_brightness = 0;
+	m_shader->setf("shininess", m_shininess);
+	m_shader->set3f("Ambient", m_ambient);
 
-		// The geometry is pushed through the rendering pipeline. Vertex shader is called for each vertex; fragment shader for each fragment (potential pixel).
-		m_vbo->render();
+	m_shader->set3f("Diffuse", diffuse);
+	m_shader->set3f("Specular", specular);
+	m_shader->set3f("LightPos", lightPos);
+	m_shader->set3f("LightColor", lightCol);
+
+	//m_hue = 0;
+	//m_saturation = 0;
+	//m_brightness = 0;
+
+	// The geometry is pushed through the rendering pipeline. Vertex shader is called for each vertex; fragment shader for each fragment (potential pixel).
+	m_vbo->render();
 
 	// The shader is deactivated.
 	m_shader->release();
