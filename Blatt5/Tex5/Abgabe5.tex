@@ -1,0 +1,50 @@
+\documentclass[12pt]{article} 
+\usepackage{german} 
+\usepackage[utf8]{inputenc} 
+\usepackage{latexsym} 
+\usepackage{amsfonts} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{wasysym}
+\usepackage{stmaryrd}
+\usepackage{makeidx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[headsepline]{scrpage2}
+\usepackage{enumerate}
+\pagestyle{plain}
+\pagestyle{scrheadings}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\lstset{language = Java, breaklines = true, showstringspaces = false}
+
+ %Titel
+\begin{document}
+\begin{center}
+ \textbf{\Large Computergrafik Blatt 5}\\
+ \emph{Anton Zickenberg, Johannes Gleichauf}
+\end{center}
+
+\section*{Aufgabe 1}
+Um zu zeigen, dass die beiden Beleuchtungsmodelle identisch oder nicht identisch sind, genügt es zu zeigen, dass die beiden Modelle gleich oder eben nicht gleich sind. Wir beginnen damit, die beiden Modelle gleichzusetzen:\\
+$R_{\text{Phong}} = R_{\text{Blinn}}$\\
+$E \cdot (R \cdot V) ^{\alpha} =  E \cdot (H \cdot N)^{\alpha}$\\
+Da wir auf beiden Seiten denselben Faktor E und $\alpha$ haben, können wir diesen streichen und erhalten:\\
+$R \cdot V = H \cdot N$\\
+Dies ist die Aussage, die wir zeigen oder widerlegen wollen. Nun gilt $(R \cdot V)^{\alpha} = cos^{\alpha}\ \Omega$ oder vereinfacht $R \cdot V = cos\ \Omega$. Sei äquivalent dazu für das Blinn Beleuchtungsmodell der Winkel $\theta$ zwischen der Normalen und dem Halbwegsvektor gegeben. Für diesen Winkel gilt $cos\ \theta = H \cdot N$. Eingesetzt erhalten wir also:\\
+$cos\ \Omega = cos\ \theta$\\
+Betrachten wir nun Abbildung 1, so ist offensichtlich, dass $\theta < \Omega$ gilt. Daraus folgt für uns:\\
+$cos\ \Omega > cos\ \theta$\\
+Somit sind die beiden Beleuchtungsmodelle anhand gewählter Winkel aus Abbildung 1 nicht gleich.
+\section*{Aufgabe 2}
+
+\end{document}
